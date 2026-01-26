@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:url('https://images.unsplash.com/photo-1523528283115-9bf9b1699245') no-repeat center center/cover;
+    min-height:100vh;
+}
+.overlay{
+    background:rgba(0,0,0,0.6);
+    min-height:100vh;
+    padding:30px;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding:25px;
+    border-radius:18px;
+    color:white;
+}
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    padding:12px;
+    text-align:center;
+}
+th{
+    background:rgba(0,0,0,0.45);
+}
+tr:hover{
+    background:rgba(255,255,255,0.15);
+}
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff5e62,#ff9966);
+    font-weight:bold;
+    cursor:pointer;
+}
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="container">
+
+<div class="top-bar">
+<h2>🛠 Admin Dashboard</h2>
+<a href="/"><button>Logout</button></a>
+</div>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Crop</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+
+{% for crop in crops %}
+<tr>
+<td>{{ crop[0] }}</td>
+<td>{{ crop[1] }}</td>
+<td>{{ crop[2] }}</td>
+<td>₹ {{ crop[3] }}</td>
+<td>
+<a href="/delete/{{ crop[0] }}">
+    <button>Delete</button>
+</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+</div>
+
+</body>
+</html>
